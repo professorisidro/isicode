@@ -10,6 +10,13 @@ Agente local de desenvolvimento React usando Java 21, LangChain4j 1.18.0 e Ollam
 - Ollama
 - Um modelo com suporte a tool calling
 
+
+## Modelos que aceitam Tool Calling e que funcionaram localmente
+
+- qwen3:8b
+- granite-4.1:3b
+
+
 ## Modelo padrão
 
 ```bash

@@ -14,7 +14,7 @@ public final class AssistantFactory {
 
     public static IsiCodeAssistant create(ToolExecutor tools, String systemPrompt) {
         String baseUrl = env("ISICODE_OLLAMA_URL", "http://localhost:11434");
-        String modelName = env("ISICODE_MODEL", "qwen3:8b");
+        String modelName = env("ISICODE_MODEL", "granite4.1:3b");
 
         ChatModel model = OllamaChatModel.builder()
                 .baseUrl(baseUrl)
@@ -32,7 +32,7 @@ public final class AssistantFactory {
     }
 
     public static String configuredModel() {
-        return env("ISICODE_MODEL", "qwen3:8b");
+        return env("ISICODE_MODEL", "granite4.1:3b");
     }
 
     private static String env(String name, String defaultValue) {
