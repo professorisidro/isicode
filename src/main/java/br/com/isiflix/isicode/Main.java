@@ -8,12 +8,14 @@ public final class Main {
     private Main() {
     }
 
-    public static void main(String[] args) {
-        Path workspacePath = args.length > 0 ? Path.of(args[0]) : Path.of(".");
+    public static void main(String[] args) {    	
+
+        Path workspacePath = args.length == 2 ? Path.of(args[1]) : Path.of(".");
+    	String mode = args.length == 1 ? args[0] : "none";
         Workspace workspace = new Workspace(workspacePath);
-        String systemPrompt = PromptLoader.loadCombinedPrompt();
+        String systemPrompt = new PromptLoader().loadCombinedPrompt();
         ToolExecutor tools = new ToolExecutor(workspace);
-        IsiCodeAssistant assistant = AssistantFactory.create(tools, systemPrompt);
+        IsiCodeAssistant assistant = AssistantFactory.create(tools, systemPrompt, mode);
 
         Banner.show(workspace.root(), AssistantFactory.configuredModel());
         showSecondTerminalHint(workspace.root());
@@ -40,7 +42,7 @@ public final class Main {
                         continue;
                     }
                     case "/clear" -> {
-                        assistant = AssistantFactory.create(tools, systemPrompt);
+                        assistant = AssistantFactory.create(tools, systemPrompt, mode);
                         System.out.println("✓ Histórico da conversa limpo. Os arquivos foram preservados.");
                         continue;
                     }
