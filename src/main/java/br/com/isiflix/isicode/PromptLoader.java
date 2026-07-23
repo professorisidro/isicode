@@ -30,7 +30,10 @@ public final class PromptLoader {
         return load("/Users/isidro/.isicode/prompts/system.md")
                 + System.lineSeparator()
                 + System.lineSeparator()
-                + load("/Users/isidro/.isicode/prompts/react-vite.md");
+                + load("/Users/isidro/.isicode/prompts/react-vite.md")
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + load("/Users/isidro/.isicode/prompts/design-system.md");
     }
 
     public  String load(String filename) {

@@ -22,12 +22,15 @@ public final class AssistantFactory {
 
 		ChatModel model;
 		if (mode.equals("--stac")) {
+			modelName = "vibecoder-base";
 			model = OpenAiChatModel.builder().baseUrl("https://llmserve-docker.up.railway.app/v1")
 					.apiKey("177a2f1b5fde04076bba8776e8c4bd80be36d18d0e4b2e80901982e3b82ec143")
+					.timeout(Duration.ofMinutes(5))
 					.modelName("vibecoder-base").temperature(0.1).logRequests(true).logResponses(true).build();
 
 		} else {
 
+			modelName = "qwen3:8b";
 			model = OllamaChatModel.builder().baseUrl(baseUrl).modelName(modelName).temperature(0.1)
 					.timeout(Duration.ofMinutes(5)).build();
 		}
